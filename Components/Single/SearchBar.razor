@@ -1,0 +1,43 @@
+﻿<div class="search-bar">
+    <img src="static/search.svg"
+         alt="Search"
+         class="search-bar__icon" />
+
+    <input type="text"
+           class="search-bar__input"
+           placeholder="@Placeholder"
+           value="@SearchText"
+           @oninput="OnInput" />
+
+    @if (!string.IsNullOrWhiteSpace(SearchText))
+    {
+        <button type="button"
+                class="search-bar__clear"
+                @onclick="Clear">
+            ×
+        </button>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string SearchText { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> SearchTextChanged { get; set; }
+
+    [Parameter]
+    public string Placeholder { get; set; } = "Search for news...";
+
+    private async Task OnInput(ChangeEventArgs e)
+    {
+        SearchText = e.Value?.ToString() ?? string.Empty;
+        await SearchTextChanged.InvokeAsync(SearchText);
+    }
+
+    private async Task Clear()
+    {
+        SearchText = string.Empty;
+        await SearchTextChanged.InvokeAsync(SearchText);
+    }
+}

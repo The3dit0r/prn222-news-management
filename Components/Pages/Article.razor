@@ -1,0 +1,27 @@
+@page "/article/{ArticleId}"
+
+@using NewsManagement.Components.Single;
+
+<div class="cinematic-cover" style="
+    background-image: url('https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1632&auto=format');
+    height: 40%;
+"></div>
+
+<div class="read-content main-article">
+    <Breadcrumb />
+
+    <h1>Moving off of TypeScript!</h1>
+
+    <div style="margin-bottom: 5rem;">
+        <span>By Dr. Kim Jong Un</span>
+        <span> - </span>
+        <span>20/12/2025 - 19:26 PM</span>
+    </div>
+
+    <p></p>
+</div>
+
+@code {
+    [Parameter]
+    public string ArticleId { get; set; }
+}

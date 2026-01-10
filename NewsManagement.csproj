@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Components\Single\News\**" />
+    <Content Remove="Components\Single\News\**" />
+    <EmbeddedResource Remove="Components\Single\News\**" />
+    <None Remove="Components\Single\News\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Components\Single\SearchBar.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\static\" />
+  </ItemGroup>
+
+</Project>

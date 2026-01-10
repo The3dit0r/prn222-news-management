@@ -1,0 +1,18 @@
+﻿.breadcrumb {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.breadcrumb__item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.breadcrumb__item:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb__separator {
+    margin: 0 0.4rem;
+    color: #aaa;
+}

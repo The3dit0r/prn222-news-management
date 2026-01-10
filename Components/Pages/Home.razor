@@ -1,0 +1,38 @@
+﻿@page "/"
+@page "/article"
+@using NewsManagement.Components.Single
+
+<PageTitle>Home</PageTitle>
+
+<div style="flex: 1;" class="space-y-2 read-content">
+
+    <h3 style="margin: 1rem 0;">Featured News</h3>
+
+    <FeaturedNewsItem 
+        CoverUrl="https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1632&auto=format"
+        Title="New AI Research Published in Nature"
+        Brief="Researchers from the School of Engineering have developed a novel approach to explainable artificial intelligence."
+        PublishDate="12/9/2025"
+        Author="Dr. Jane Smith"
+        ReadingTime="6 min read"
+    />
+
+    <br />
+    <h2 style="margin: 2rem 0">Latest News</h2>
+
+    @for (i = 0; i < 10; i++) {
+        <NewsItem 
+            CoverUrl="https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1632&auto=format"
+            Title="New AI Research Published in Nature"
+            Brief="Researchers from the School of Engineering have developed a novel approach to explainable artificial intelligence."
+            PublishDate="12/9/2025"
+            Author="Dr. Jane Smith"
+            ReadingTime="6 min read"
+        />
+    }
+</div>
+
+
+@code {
+    int i = 0;
+}

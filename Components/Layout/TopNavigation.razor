@@ -1,0 +1,44 @@
+﻿@using NewsManagement.Components.Single
+@inherits LayoutComponentBase
+
+
+<div class="top-nav-bar-wrapper">
+    <div class="top-nav-bar invert">
+        <img src="static/icon.svg" height="42"/>
+
+        <div class="main-logo">
+            <a class="name" href="/">The News Portal</a>
+            <span class="sub">Your trusty news companion</span>
+        </div>
+
+        <div style="width: 400px;">
+            <SearchBar />
+        </div>
+
+        <div class="nav-menu">
+            @foreach (NavCatalog item in list)
+            {
+                <a class="nav-item" href="@item.path">@item.name</a>
+            }
+        </div>
+
+        <div>
+            <AccountButton />
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+    class NavCatalog { public string name = "";  public string path = ""; }
+
+    List<NavCatalog> list = new() {
+      //  new NavCatalog {path = "/category", name = "Category" },
+      //  new NavCatalog {path = "/events", name = "Events" },
+      //  new NavCatalog {path = "/on-campus", name = "On Campus" },
+      //  new NavCatalog {path = "/science", name = "Science & Tech" },
+      //  new NavCatalog {path = "/world", name = "World" },
+      //  new NavCatalog {path = "/arts-and-culture", name = "Arts & Culture" },
+    };
+}

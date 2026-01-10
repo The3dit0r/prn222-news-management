@@ -1,0 +1,40 @@
+﻿<a class="news-card" href="/article/@Title">
+    <div class="news-card__cover">
+        <img src="@CoverUrl" alt="@Title" />
+    </div>
+
+    <div class="news-card__content" >
+        <div class="news-card__meta">
+            @if (!string.IsNullOrEmpty(PublishDate)) {
+                <span>@PublishDate</span>
+            }
+            <span class="news-card__separator"> • </span>
+            <span>@Author</span>
+            <span class="news-card__separator"> • </span>
+            <span>@ReadingTime</span>
+        </div>
+
+        <h3 class="news-card__title">@Title</h3>
+        <p class="news-card__brief">@Brief</p>
+    </div>
+</a>
+
+@code {
+    [Parameter, EditorRequired]
+    public string CoverUrl { get; set; } = string.Empty;
+
+    [Parameter, EditorRequired]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Brief { get; set; } = string.Empty;
+
+    [Parameter]
+    public string? PublishDate { get; set; }
+
+    [Parameter]
+    public string? Author { get; set; } = string.Empty;
+
+    [Parameter]
+    public string? ReadingTime { get; set; } = string.Empty;
+}

@@ -1,0 +1,78 @@
+﻿@inject NavigationManager Navigation
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    @for (int i = 0; i < Breadcrumbs.Count - 1; i++)
+    {
+        var crumb = Breadcrumbs[i];
+
+        <a class="breadcrumb__item"
+           href="@crumb.Url">
+            @crumb.Label
+        </a>
+
+        @if (i < Breadcrumbs.Count - 1)
+        {
+            <span class="breadcrumb__separator">/</span>
+        }
+    }
+</nav>
+
+@code {
+    private List<BreadcrumbItem> Breadcrumbs = new();
+
+    protected override void OnInitialized()
+    {
+        BuildBreadcrumbs();
+        Navigation.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        BuildBreadcrumbs();
+        StateHasChanged();
+    }
+
+    private void BuildBreadcrumbs()
+    {
+        var relativePath = Navigation.ToBaseRelativePath(Navigation.Uri);
+        var segments = relativePath
+            .Split('/', StringSplitOptions.RemoveEmptyEntries);
+
+        var currentPath = string.Empty;
+        Breadcrumbs.Clear();
+        Breadcrumbs.Add(new BreadcrumbItem { Label = "Home", Url = "/" });
+
+        foreach (var segment in segments)
+        {
+            currentPath += "/" + segment;
+
+            Breadcrumbs.Add(new BreadcrumbItem
+            {
+                Label = FormatSegment(segment),
+                Url = currentPath
+            });
+        }
+    }
+
+    private static string FormatSegment(string segment)
+    {
+        var decoded = Uri.UnescapeDataString(segment);
+
+        return string.Join(
+            " ",
+            decoded.Split('-', StringSplitOptions.RemoveEmptyEntries)
+                   .Select(w => char.ToUpper(w[0]) + w[1..])
+        );
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+
+    private sealed class BreadcrumbItem
+    {
+        public string Label { get; set; } = string.Empty;
+        public string Url { get; set; } = string.Empty;
+    }
+}
