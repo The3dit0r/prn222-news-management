@@ -26,13 +26,16 @@
 
 .news-card__cover {
     flex: 0 0 270px;
+    aspect-ratio: 16 / 9;
+
+    border-radius: 0.25rem;
+    overflow: hidden;
 }
 
 .news-card__cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 4px;
 }
 
 .news-card__content {
@@ -46,7 +49,10 @@
 }
 
 .news-card__brief {
+    overflow: hidden;
+
     margin: 0;
     color: #555;
     line-height: 1.4;
+
 }

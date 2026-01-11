@@ -2,10 +2,7 @@
 
 @using NewsManagement.Components.Single;
 
-<div class="cinematic-cover" style="
-    background-image: url('https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1632&auto=format');
-    height: 40%;
-"></div>
+<div class="cinematic-cover dft-bg-cover" style="height: 40%; background-size: 100px, auto;"></div>
 
 <div class="read-content main-article">
     <Breadcrumb />
@@ -18,10 +15,20 @@
         <span>20/12/2025 - 19:26 PM</span>
     </div>
 
-    <p></p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.
+    </p>
+
+
+    <h3 class="section-title">More News</h3>
 </div>
+
+
 
 @code {
     [Parameter]
-    public string ArticleId { get; set; }
+    public string ArticleId { get; set; } = string.Empty;
 }

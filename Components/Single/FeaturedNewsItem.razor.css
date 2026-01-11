@@ -1,9 +1,13 @@
 ﻿.featured-news-card {
     position: relative;
+        
     min-height: 420px;
+    width: 100%;
+
     background-size: cover;
     background-position: center;
-    border-radius: 6px;
+    border-radius: 0.25rem;
+
     overflow: hidden;
 }
 

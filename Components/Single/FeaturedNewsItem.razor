@@ -1,32 +1,19 @@
-﻿<div class="featured-news-card" style="background-image: url('@CoverUrl');">
+﻿@using NewsManagement.Models;
+
+<div class="featured-news-card dft-bg-cover" style="background-size: 130px, auto;">
     <div class="featured-news-card__overlay">
         <div class="featured-news-card__content">
             <div class="featured-news-card__meta">
-                @ReadingTime
+                6 minutes
             </div>
 
-            <h2 class="featured-news-card__title">@Title</h2>
-            <p class="featured-news-card__brief">@Brief</p>
+            <h2 class="featured-news-card__title">@Article.NewsTitle</h2>
+            <p class="featured-news-card__brief line-clamp-2">@Article.NewsContent</p>
         </div>
     </div>
 </div>
 
 @code {
     [Parameter, EditorRequired]
-    public string CoverUrl { get; set; } = string.Empty;
-
-    [Parameter, EditorRequired]
-    public string Title { get; set; } = string.Empty;
-
-    [Parameter]
-    public string Brief { get; set; } = string.Empty;
-
-    [Parameter]
-    public string? PublishDate { get; set; }
-
-    [Parameter]
-    public string? Author { get; set; } = string.Empty;
-
-    [Parameter]
-    public string? ReadingTime { get; set; } = string.Empty;
+    public NewsArticle Article { get; set; } = null!;
 }

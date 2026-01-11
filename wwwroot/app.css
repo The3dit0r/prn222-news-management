@@ -1,3 +1,5 @@
+@import url("/custom.css");
+
 html {
   height: 100%;
   overflow: hidden;
@@ -13,6 +15,7 @@ body {
   height: 100vh;
 
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .app-wrapper > main {
@@ -87,7 +90,7 @@ h1, h2, h3, h4, title {
   align-items: center;
 
   padding: 0.4rem 0.6rem;
-  border-radius: 6px;
+  border-radius: 0.25rem;
 
   border: 1px solid #ccc;
   background-color: #fff;
@@ -123,4 +126,10 @@ h1, h2, h3, h4, title {
 
 .main-article {
     text-align: justify;
+
+    > p {
+        max-width: 800px;
+        font-size: 18px;
+    }
 }
+
