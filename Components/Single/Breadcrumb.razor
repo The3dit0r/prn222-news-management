@@ -5,20 +5,23 @@
     {
         var crumb = Breadcrumbs[i];
 
-        <a class="breadcrumb__item"
+        <a class="breadcrumb-item"
            href="@crumb.Url">
-            @crumb.Label
+            @GetCrumbLabel(crumb.Label)
         </a>
 
         @if (i < Breadcrumbs.Count - 1)
         {
-            <span class="breadcrumb__separator">/</span>
+            <span class="breadcrumb-separator">/</span>
         }
     }
 </nav>
 
 @code {
     private List<BreadcrumbItem> Breadcrumbs = new();
+
+    [Parameter]
+    public Dictionary<string, string> LabelDic { get; set; } = new();
 
     protected override void OnInitialized()
     {
@@ -63,6 +66,16 @@
             decoded.Split('-', StringSplitOptions.RemoveEmptyEntries)
                    .Select(w => char.ToUpper(w[0]) + w[1..])
         );
+    }
+
+    private string GetCrumbLabel(string lb) {
+        try
+        {
+            return LabelDic[lb];
+        } catch
+        {
+            return lb;
+        }
     }
 
     public void Dispose()

@@ -1,0 +1,33 @@
+﻿.tab-navigator {
+    display: flex;
+    gap: 0.1rem;
+
+}
+
+
+.tab-navigator .tab {
+    padding: 0.6rem;
+    text-align: center;
+    flex: 1;
+
+    font-size: 1em;
+    border-bottom: 0.2rem solid #0001;
+
+    user-select: none;
+    border-radius: 0.2rem;
+
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.tab-navigator {
+
+    .tab.active,
+    .tab:hover {
+        border-bottom-color: #0764fc;
+        cursor: pointer;
+    }
+
+    .tab:hover {
+        background-color: #0000000a;
+    }
+}

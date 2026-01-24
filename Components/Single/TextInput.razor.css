@@ -1,0 +1,36 @@
+
+.text-input {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    
+    box-shadow: 0px 4px 5px #0001;
+}
+
+.text-input__icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5rem;
+    opacity: 0.7;
+}
+
+.text-input__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.text-input__clear {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #777;
+}
+
+.text-input__clear:hover {
+    color: #000;
+}

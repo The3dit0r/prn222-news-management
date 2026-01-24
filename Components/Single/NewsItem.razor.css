@@ -8,14 +8,15 @@
     text-decoration: none;
 
     border-radius: 0.25rem;
+    transition: all 0.2s;
 }
 
 .news-card:hover {
-    background: #00000010;
+    background: #00000007;
     cursor: pointer;
 
     .news-card__title {
-        text-decoration: underline;
+/*        text-decoration: underline;*/
     }
 }
 
@@ -25,7 +26,7 @@
 }
 
 .news-card__cover {
-    flex: 0 0 270px;
+    flex: 0 0 240px;
     aspect-ratio: 16 / 9;
 
     border-radius: 0.25rem;

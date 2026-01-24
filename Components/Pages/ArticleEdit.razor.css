@@ -1,0 +1,18 @@
+﻿.save-discard {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    padding: 1rem 5rem;
+
+    background: #fff;
+    z-index: 10;
+
+    border-top: 0.1rem solid #0002;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -1,0 +1,38 @@
+﻿@page "/editorial"
+
+@using NewsManagement.Components.Single;
+@using NewsManagement.DataAccess;
+@using NewsManagement.Models;
+
+@inject NewsAppContext DbContext;
+
+
+<div class="read-content">
+    <h3>Article Editorial</h3>
+    <div style="height: 1rem"></div>
+
+    <TabNavigator Tabs="@EditorialTabs"/>
+    <div style="height: 1rem"></div>
+
+    @foreach (var article in Articles)
+    {
+        <EditorialItem Article="@article" />
+    }
+
+    <div class="end-of-list">End of list</div>
+</div>
+
+@code {
+    private List<NewsArticle> Articles = new();
+
+    private List<string> EditorialTabs = new() {
+        "All", "Posted", "Hidden", "Draft"
+    };
+
+    protected override void OnInitialized()
+    {
+        var list = DbContext.NewsArticles.ToList();
+        Articles = list;
+    }
+
+}

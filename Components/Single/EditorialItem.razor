@@ -1,0 +1,47 @@
+﻿@using NewsManagement.Models;
+
+@inject NavigationManager Navigation
+
+
+
+@if (Article != null) {
+<a href="/article/@Article.NewsArticleId/edit">
+    <article class="editorial-item">
+        <div class="editorial-main">
+            <h3 class="editorial-title">@Article.NewsTitle</h3>
+            <p class="editorial-headline">@Article.Headline</p>
+
+            <div class="editorial-meta">
+                <span class="category">@Article.Category</span>
+                <span class="source">@Article.NewsSource</span>
+                <span class="date">@Article.CreatedDate</span>
+                <span class="author">@Article.CreatedBy</span>
+            </div>
+        </div>
+
+        <div class="editorial-status">
+            <span class="status published">
+                @if (Article.NewsStatus == true) { 
+                    <b>Displaying</b>
+                } else { 
+                    <b>Hidden</b> 
+                }
+            </span>
+            <span class="modified">Updated: 2026-01-16</span>
+        </div>
+    </article>
+</a>
+}
+
+
+@code {
+    [Parameter, EditorRequired]
+    public NewsArticle? Article { get; set; } = null!;
+
+    public void NavToPage()
+    {
+        if (Article == null) return;
+
+        Navigation.NavigateTo("/editorial/" + Article.NewsArticleId);
+    }
+}

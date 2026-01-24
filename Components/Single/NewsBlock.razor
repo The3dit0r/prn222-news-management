@@ -1,0 +1,24 @@
+﻿@using NewsManagement.Models;
+
+@if (Article != null)
+{
+    
+<div class="news-block">
+    <div class="dft-bg-cover"></div>
+    <div class="info">
+        <div class="title">@Article.NewsTitle</div>
+        <div class="brief line-clamp-2">
+            <span>@Article.CreatedById</span>
+            <span class="news-card__separator"> • </span>
+            <span>6 minutes</span>
+        </div>
+    </div>
+</div>
+
+}
+
+
+@code {
+    [Parameter]
+    public NewsArticle Article { get; set; } = null!;
+}

@@ -3,16 +3,16 @@
     color: #666;
 }
 
-.breadcrumb__item {
+.breadcrumb-item {
     text-decoration: none;
     color: inherit;
 }
 
-.breadcrumb__item:hover {
+.breadcrumb-item:hover {
     text-decoration: underline;
 }
 
-.breadcrumb__separator {
+.breadcrumb-separator {
     margin: 0 0.4rem;
     color: #aaa;
 }

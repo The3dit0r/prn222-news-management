@@ -4,21 +4,27 @@
 @using NewsManagement.Models
 @using NewsManagement.Components.Single
 @using NewsManagement.TestData;
+@using NewsManagement.DataAccess;
 
 @using Newtonsoft.Json;
+
+@inject NewsAppContext DbContext;
 
 <PageTitle>Home</PageTitle>
 
 <div style="flex: 1;" class="space-y-2 read-content">
 
-    <h3 class="section-title">Featured News</h3>
-    <FeaturedNewsItem Article="@articles[0]"/>
+    @* <h3 class="section-title">Featured News</h3> *@
+    @* <FeaturedNewsItem Article="@articles[0]"/> *@
    
     <h3 class="section-title">Latest News</h3> 
     @foreach (var article in articles) {
         <NewsItem Article="@article"/>
     }
+
+    <div class="end-of-list">End of list</div>
 </div>
+
 
 
 @code {
@@ -26,10 +32,7 @@
 
     protected override void OnInitialized()
     {
-        var Data = TestData.GetAllNews();
-        if (Data != null)
-        {
-            articles = Data;
-        }
+        var Data = DbContext.NewsArticles.ToList<NewsArticle>();
+        articles = Data;
     }
 }

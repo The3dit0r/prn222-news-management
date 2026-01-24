@@ -1,0 +1,39 @@
+﻿@rendermode InteractiveServer
+
+@using System.Text
+
+
+
+@if (Tabs.Count != 0)
+{
+
+    <div class="tab-navigator">
+        @foreach (var (title, index) in Tabs.Select((t, i) => (t, i)))
+        {
+            var ClassName = new StringBuilder("tab");
+
+            if (ActiveIndex == index) {
+                ClassName.Append(" active");
+            }
+
+            <div class="@ClassName" @onclick="() => SetActiveTab(index)">@title</div>
+        }
+    </div>
+}
+
+
+
+@code {
+    public int ActiveIndex { get; set; }  = 0;
+
+    [Parameter]
+    public List<string> Tabs { get; set;  }  = new();
+
+    
+
+    public void SetActiveTab(int index)
+    {
+        ActiveIndex = index;
+        Console.WriteLine("Option " + index + " is pressed");
+    }
+}

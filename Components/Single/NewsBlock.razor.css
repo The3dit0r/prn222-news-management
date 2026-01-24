@@ -1,0 +1,43 @@
+﻿.news-block {
+    width: 350px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    transition: all 0.2s;
+
+
+    .dft-bg-cover {
+        aspect-ratio: 16/9;
+        border-radius: 0.5rem;
+    }
+
+    .info {
+        padding: 1rem 0;
+    }
+
+    .title {
+        font-weight: 600;
+        font-size: 1.06rem;
+        text-align: left;
+        margin-bottom: 0.25rem;
+    }
+
+    .brief {
+        text-align: left;
+        color: #000c;
+    }
+}
+
+
+.news-block:hover {
+    background-color: #0001;
+    cursor: pointer;
+
+    .title {
+        text-decoration: underline;
+    }
+}
+
+.news-block:active{
+    filter: brightness(0.8);
+}

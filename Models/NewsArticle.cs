@@ -1,18 +1,35 @@
-﻿namespace NewsManagement.Models;
-public class NewsArticle
+﻿using System;
+using System.Collections.Generic;
+
+namespace NewsManagement.Models;
+
+public partial class NewsArticle
 {
+    public string NewsArticleId { get; set; } = null!;
+
+    public string? NewsTitle { get; set; }
+
+    public string Headline { get; set; } = null!;
+
     public DateTime? CreatedDate { get; set; }
 
-    public string NewsArticleId { get; set; } = string.Empty;
-    public string NewsTitle { get; set; } = string.Empty;
-    public string Headline { get; set; } = string.Empty;
+    public string? NewsContent { get; set; }
 
-    public string NewsContent { get; set; } = string.Empty;
-    public string NewsSource { get; set; } = string.Empty;
-    public string CategoryID { get; set; } = string.Empty;
-    public string NewsStatus { get; set; } = string.Empty;
-    public string CreatedByID { get; set; } = string.Empty;
-    public string UpdatedByID { get; set; } = string.Empty;
-    public string ModifiedDate { get; set; } = string.Empty;
+    public string? NewsSource { get; set; }
 
+    public short? CategoryId { get; set; }
+
+    public bool? NewsStatus { get; set; }
+
+    public short? CreatedById { get; set; }
+
+    public short? UpdatedById { get; set; }
+
+    public DateTime? ModifiedDate { get; set; }
+
+    public virtual Category? Category { get; set; }
+
+    public virtual SystemAccount? CreatedBy { get; set; }
+
+    public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
 }

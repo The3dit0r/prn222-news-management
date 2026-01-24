@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap');
 @import url("/custom.css");
 
 html {
@@ -6,11 +7,16 @@ html {
 }
 
 body {
-  font-family: 'Google Sans', serif;
+  --bs-font-body: "Google Sans", sans-serif;
+  --bs-font-head: "Outfit", "Google Sans Flex", "Google Sans", san-serif;
+  --bs-font-monospace: "JetBrains Mono", "Cascadia Code", monospace;
+
+  font-family: var(--bs-font-body);
   font-size: 16px;
 }
 
 .app-wrapper {
+  padding-top: 4rem;
   width: 100%;
   height: 100vh;
 
@@ -28,56 +34,20 @@ main {
 
 .read-content {
   padding: 4rem 4rem 4rem 4rem;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.menu {
-  position: absolute;
-  min-width: 13rem;
-  min-height: 3rem;
-
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px;
-  border: 1px solid #0002;
-
-  font-size: 0.9em;
-
-  border-radius: 0.5rem;
-  padding: 0.25rem 0;
-
-  background: #ffffff;
-
-  .menu-item {
-    display: block;
-    padding: 0.5rem 1rem;
-  }
-
-  .menu-item:hover {
-    background: #0002;
-  }
-
-  hr {
-    margin: 0.4rem;
-  }
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 h1, h2, h3, h4, title {
-    font-family: "Circular Std Medium";
-    font-weight: 600!important;
+    font-family: var(--bs-font-head);
+    font-weight: 600 !important;
 }
 
-
-.menu-wrapper {
-  .menu:not(:active) {
-    display: none;
-  }
-}
-
-.menu-wrapper:has(.menu-trigger:focus) {
-  .menu {
-    display: block;
-  }
-}
 
 .cinematic-cover {
   width: 100%;
@@ -85,51 +55,66 @@ h1, h2, h3, h4, title {
   background-size: cover;
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.25rem;
-
-  border: 1px solid #ccc;
-  background-color: #fff;
-}
-
-.search-bar__icon {
-  width: 18px;
-  height: 18px;
-
-  margin-right: 0.5rem;
-  opacity: 0.7;
-}
-
-.search-bar__input {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 0.95rem;
-}
-
-.search-bar__clear {
-  background: none;
-  border: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-  color: #777;
-}
-
-.search-bar__clear:hover {
-  color: #000;
-}
-
-
 .main-article {
     text-align: justify;
 
     > p {
-        max-width: 800px;
         font-size: 18px;
-    }
+        line-height: 2;
+    } 
 }
 
+
+
+.aictr {
+    align-items: center;
+}
+
+.jcctr {
+    justify-content: center;
+}
+
+.spbtw {
+    justify-content: space-between;
+}
+
+.editorial-input {
+    display: block;
+    border: none;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+
+    font-size: 18px;
+    text-align: justify;
+
+    margin: 0.5rem 0 3rem 0;
+    padding: 1rem 0 1rem 0;
+
+    max-width: 900px;
+    width: 100%;
+
+    border-bottom: 1px solid #0001;
+
+    font-family: var(--bs-font-body);
+}
+
+.editorial-input.title {
+    font-weight: 700;
+    font-size: 2.5em;
+    font-family: var(--bs-font-head) !important;
+    text-align: left;
+}
+
+.editorial-input.headline {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.editorial-input.body {
+    line-height: 2;
+}
+
+.editorial-input:focus {
+    border-bottom-color: #000;
+}

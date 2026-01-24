@@ -1,34 +1,65 @@
 @page "/article/{ArticleId}"
 
 @using NewsManagement.Components.Single;
+@using NewsManagement.TestData;
+@using NewsManagement.Models;
+@using NewsManagement.DataAccess;
 
-<div class="cinematic-cover dft-bg-cover" style="height: 40%; background-size: 100px, auto;"></div>
+@inject NewsAppContext DbContext;
+
+@if (Current != null)
+{
+    
+
+<div class="cinematic-cover dft-bg-cover" style="height: 50%; background-size: 100px, auto; max-height: 500px;"></div>
 
 <div class="read-content main-article">
     <Breadcrumb />
 
-    <h1>Moving off of TypeScript!</h1>
+    <h1 style="text-align: left">
+        @Current.NewsTitle
+    </h1>
 
-    <div style="margin-bottom: 5rem;">
-        <span>By Dr. Kim Jong Un</span>
+    <div style="margin: 2rem 0;">
+        <AccountDisplay />
         <span> - </span>
         <span>20/12/2025 - 19:26 PM</span>
     </div>
 
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.
+    <p class="mt-4" style="white-space: pre-line;">
+        @Current.NewsContent
     </p>
 
+    <div style="height: 12rem;"></div>
 
     <h3 class="section-title">More News</h3>
+
+    <div class="grid-container">
+    
+    </div>
 </div>
 
+} else
+
+{
+    
+}
 
 
 @code {
     [Parameter]
     public string ArticleId { get; set; } = string.Empty;
+
+
+    public NewsArticle Current { get; set; } = null!;
+
+    protected override void OnInitialized()
+    {
+        var Data = DbContext.NewsArticles.Find(ArticleId);
+
+        if (Data != null)
+        {
+            Current = Data;
+        }
+    }
 }

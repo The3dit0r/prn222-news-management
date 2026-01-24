@@ -1,9 +1,11 @@
-﻿.btn.my-account {
+﻿.my-account {
     border: 1px solid #0002;
     border-radius: 10rem;
-    aspect-ratio: 1;
     display: grid;
     place-items: center;
+
+    height: 3rem;
+    width: 3rem;
 }
 
 .btn.my-account:focus {

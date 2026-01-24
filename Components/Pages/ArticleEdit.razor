@@ -1,0 +1,86 @@
+﻿@rendermode InteractiveServer
+
+@page "/article/{ArticleId}/edit"
+
+@using NewsManagement.Models;
+@using NewsManagement.DataAccess;
+@using NewsManagement.Components.Single;
+
+@inject NewsAppContext DbContext;
+
+<PageTitle>The News Portal | Edit Article</PageTitle>
+
+<div class="read-content">
+@if (Article != null)
+{
+    <h3>Edit News Article</h3>
+
+    <div>@Article.NewsTitle</div>
+
+    <Breadcrumb LabelDic="@Dic"/>
+        
+    <TabNavigator Tabs="@Tabs"/>
+
+    <EditorialInput BindValue="@Article.NewsTitle" placeholder="A captivating News Title here..." ClassName="title"/>
+
+    <EditorialInput BindValue="@Article.Headline" placeholder="Your story headline" ClassName="headline"/>
+
+    <EditorialInput BindValue="@Article.NewsContent" placeholder="Your exciting adventure here..." />
+
+
+        @if (HasNotChanged())
+        {
+            <div></div>
+        } else
+        {   
+            <div class="save-discard">
+                <div>
+                    <h5>You have unsave changes</h5>
+                    <span>Please remember to save them so you won't lose your progress</span>
+                </div>
+
+                <div class="d-flex aictr gap-2">
+                    <button class="btn">Save Edit</button>
+                    <button class="btn">Discard</button>
+                </div>
+            </div>
+        }
+} else
+{
+    
+}
+</div>
+
+@code {
+    [Parameter]
+    public string ArticleId { get; set; } = "";
+
+    private NewsArticle Article { get; set; } = null!;
+    private NewsArticle OriginalArticle { get; set; } = null!;
+
+    private Dictionary<string, string> Dic = new();
+
+    private List<string> Tabs = new() { "Content", "Settings" };
+
+    protected bool HasNotChanged()
+    {
+        var title = string.Equals(OriginalArticle.NewsTitle, Article.NewsTitle);
+        var headlines = string.Equals(OriginalArticle.Headline, Article.Headline);
+        var body = string.Equals(OriginalArticle.NewsContent, Article.NewsContent);
+
+        return title && headlines && body;
+    }
+
+    protected override void OnInitialized()
+    {
+        var Data = DbContext.NewsArticles.Find(ArticleId);
+
+
+        if (Data != null) {
+            Article = Data;
+            OriginalArticle = Data;
+
+            Dic.Add(Article.NewsArticleId, Article.NewsTitle ?? Article.NewsArticleId);
+        }
+    }
+}

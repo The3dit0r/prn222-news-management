@@ -1,0 +1,45 @@
+﻿@rendermode InteractiveServer
+
+<div class="text-input">
+    <img src="static/search.svg"
+         alt="Search"
+         class="text-input__icon" />
+
+    <input type="text"
+           class="text-input__input"
+           placeholder="@Placeholder"
+           value="@TextValue"
+           @oninput="OnInput" />
+
+    @if (!string.IsNullOrWhiteSpace(TextValue))
+    {
+        <button type="button"
+                class="text-input__clear"
+                @onclick="Clear">
+            ×
+        </button>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string TextValue { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public string Placeholder { get; set; } = "Search for news...";
+
+    private async Task OnInput(ChangeEventArgs e)
+    {
+        TextValue = e.Value?.ToString() ?? string.Empty;
+        await ValueChanged.InvokeAsync(TextValue);
+    }
+
+    private async Task Clear()
+    {
+        TextValue = string.Empty;
+        await ValueChanged.InvokeAsync(TextValue);
+    }
+}
